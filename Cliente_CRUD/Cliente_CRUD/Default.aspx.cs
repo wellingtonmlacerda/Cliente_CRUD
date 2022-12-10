@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Cliente_CRUD.Classes;
+using Cliente_CRUD.Entityframework;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,7 +13,20 @@ namespace Cliente_CRUD
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            try
+            {
+                using (CLIENTEEntities db = new CLIENTEEntities())
+                {
+                    var clinetes = db.CLIENTE.ToList();
 
+                    lvClientes.DataSource = clinetes;
+                    lvClientes.DataBind();
+                }
+            }catch(Exception ex)
+            {
+                hfError.Value = ex.Message;
+                Utilitarios.Alerta(this, "Um erro ocorreu ao carregar a página!");
+            }
         }
     }
 }

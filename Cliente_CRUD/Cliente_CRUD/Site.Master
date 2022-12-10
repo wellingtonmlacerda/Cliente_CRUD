@@ -15,9 +15,18 @@
     <webopt:bundlereference runat="server" path="~/Content/css" />
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
 
+    <asp:ContentPlaceHolder ID="Js" runat="server" />
+    <style>
+        .hide{
+            display: none;
+        }
+        .foto{
+            width: 220px;
+        }
+    </style>
 </head>
 <body>
-    <form runat="server">
+    <form runat="server" class="form-horizontal">
         <asp:ScriptManager runat="server">
             <Scripts>
                 <%--To learn more about bundling scripts in ScriptManager see https://go.microsoft.com/fwlink/?LinkID=301884 --%>
@@ -46,13 +55,11 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" runat="server" href="~/">Application name</a>
+                    <a class="navbar-brand" runat="server" href="~/">Crud Clientes</a>
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
                         <li><a runat="server" href="~/">Home</a></li>
-                        <li><a runat="server" href="~/About">About</a></li>
-                        <li><a runat="server" href="~/Contact">Contact</a></li>
                     </ul>
                 </div>
             </div>
@@ -67,5 +74,21 @@
         </div>
 
     </form>
+    <script src="/Scripts/inputmask/jquery.inputmask.js"></script>
+    <script src="/Scripts/inputmask/inputmask.min.js"></script>
+    <script>
+        $(".cpf").inputmask({
+            mask: ['999.999.999-99'],
+            keepStatic: true
+        });
+        $(".cnpj").inputmask({
+            mask: ['99.999.999/9999-99'],
+            keepStatic: true
+        });
+        $(".telefone").inputmask({
+            mask: ['(99) 9.9999-9999'],
+            keepStatic: true
+        });
+    </script>
 </body>
 </html>

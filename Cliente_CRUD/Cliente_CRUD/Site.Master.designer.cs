@@ -15,13 +15,13 @@ namespace Cliente_CRUD
     {
 
         /// <summary>
-        /// HeadContent control.
+        /// Js control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder HeadContent;
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder Js;
 
         /// <summary>
         /// MainContent control.

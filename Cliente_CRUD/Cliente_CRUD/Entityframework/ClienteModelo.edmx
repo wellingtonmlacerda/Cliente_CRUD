@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="CLIENTEModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CLIENTE">
+          <Key>
+            <PropertyRef Name="CLIE_PK_ID" />
+          </Key>
+          <Property Name="CLIE_PK_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CLIE_NOME" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="CLIE_DATA_NASCIMENTO" Type="datetime" />
+          <Property Name="CLIE_TELEFONE" Type="nvarchar" MaxLength="15" />
+          <Property Name="CLIE_IMAGEM" Type="varbinary(max)" />
+          <Property Name="CLIE_TIPO" Type="nvarchar" MaxLength="2" />
+          <Property Name="CLIE_EMAIL" Type="nvarchar" MaxLength="100" />
+          <Property Name="CLIE_CPF" Type="nvarchar" MaxLength="14" />
+          <Property Name="CLIE_CNPJ" Type="nvarchar" MaxLength="18" />
+          <Property Name="CLIE_DATA_CADASTRO" Type="datetime" />
+          <Property Name="CLIE_STATUS" Type="int" Nullable="false" />
+          <Property Name="CLIE_EXCLUIDO" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="CLIENTEModelStoreContainer">
+          <EntitySet Name="CLIENTE" EntityType="Self.CLIENTE" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CLIENTEModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="CLIENTEEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CLIENTE" EntityType="CLIENTEModel.CLIENTE" />
+        </EntityContainer>
+        <EntityType Name="CLIENTE">
+          <Key>
+            <PropertyRef Name="CLIE_PK_ID" />
+          </Key>
+          <Property Name="CLIE_PK_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CLIE_NOME" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CLIE_DATA_NASCIMENTO" Type="DateTime" Precision="3" />
+          <Property Name="CLIE_TELEFONE" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="CLIE_IMAGEM" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="CLIE_TIPO" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="CLIE_EMAIL" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CLIE_CPF" Type="String" MaxLength="14" FixedLength="false" Unicode="true" />
+          <Property Name="CLIE_CNPJ" Type="String" MaxLength="18" FixedLength="false" Unicode="true" />
+          <Property Name="CLIE_DATA_CADASTRO" Type="DateTime" Precision="3" />
+          <Property Name="CLIE_STATUS" Type="Int32" Nullable="false" />
+          <Property Name="CLIE_EXCLUIDO" Type="Boolean" Nullable="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CLIENTEModelStoreContainer" CdmEntityContainer="CLIENTEEntities">
+          <EntitySetMapping Name="CLIENTE">
+            <EntityTypeMapping TypeName="CLIENTEModel.CLIENTE">
+              <MappingFragment StoreEntitySet="CLIENTE">
+                <ScalarProperty Name="CLIE_EXCLUIDO" ColumnName="CLIE_EXCLUIDO" />
+                <ScalarProperty Name="CLIE_STATUS" ColumnName="CLIE_STATUS" />
+                <ScalarProperty Name="CLIE_DATA_CADASTRO" ColumnName="CLIE_DATA_CADASTRO" />
+                <ScalarProperty Name="CLIE_CNPJ" ColumnName="CLIE_CNPJ" />
+                <ScalarProperty Name="CLIE_CPF" ColumnName="CLIE_CPF" />
+                <ScalarProperty Name="CLIE_EMAIL" ColumnName="CLIE_EMAIL" />
+                <ScalarProperty Name="CLIE_TIPO" ColumnName="CLIE_TIPO" />
+                <ScalarProperty Name="CLIE_IMAGEM" ColumnName="CLIE_IMAGEM" />
+                <ScalarProperty Name="CLIE_TELEFONE" ColumnName="CLIE_TELEFONE" />
+                <ScalarProperty Name="CLIE_DATA_NASCIMENTO" ColumnName="CLIE_DATA_NASCIMENTO" />
+                <ScalarProperty Name="CLIE_NOME" ColumnName="CLIE_NOME" />
+                <ScalarProperty Name="CLIE_PK_ID" ColumnName="CLIE_PK_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
