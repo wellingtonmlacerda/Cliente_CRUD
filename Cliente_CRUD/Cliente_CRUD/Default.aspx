@@ -12,6 +12,7 @@
                 <LayoutTemplate>
                     <table class="table table-striped">
                         <tr>
+                            <th scope="col">#</th>
                             <th scope="col">Codigo</th>
                             <th scope="col">Nome</th>
                             <th scope="col">Email</th>
@@ -51,7 +52,7 @@
                             <asp:Label ID="lblDataCadastro" runat="server" Text='<%# Eval("CLIE_DATA_CADASTRO") %>' />
                         </td>
                         <td>
-                            <asp:Label ID="lblStatus" runat="server" Text='<%# Eval("CLIE_STATUS") == "1" ? "Ativo" : "Inativo" %>' />
+                            <asp:Label ID="lblStatus" runat="server" Text='<%# (int)Eval("CLIE_STATUS") == 1 ? "Ativo" : "Inativo" %>' />
                         </td>
                     </tr>
                 </ItemTemplate>

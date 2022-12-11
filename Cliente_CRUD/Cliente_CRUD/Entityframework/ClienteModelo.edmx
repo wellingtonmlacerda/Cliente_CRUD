@@ -12,7 +12,7 @@
           <Property Name="CLIE_PK_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="CLIE_NOME" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="CLIE_DATA_NASCIMENTO" Type="datetime" />
-          <Property Name="CLIE_TELEFONE" Type="nvarchar" MaxLength="15" />
+          <Property Name="CLIE_TELEFONE" Type="nvarchar" MaxLength="20" />
           <Property Name="CLIE_IMAGEM" Type="varbinary(max)" />
           <Property Name="CLIE_TIPO" Type="nvarchar" MaxLength="2" />
           <Property Name="CLIE_EMAIL" Type="nvarchar" MaxLength="100" />
@@ -39,7 +39,7 @@
           <Property Name="CLIE_PK_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="CLIE_NOME" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="CLIE_DATA_NASCIMENTO" Type="DateTime" Precision="3" />
-          <Property Name="CLIE_TELEFONE" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="CLIE_TELEFONE" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="CLIE_IMAGEM" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="CLIE_TIPO" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
           <Property Name="CLIE_EMAIL" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />

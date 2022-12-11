@@ -14,5 +14,9 @@ namespace Cliente_CRUD.Classes
         {
             ScriptManager.RegisterClientScriptBlock(control,control.GetType(), mensagem,"<script> alert('"+mensagem+"');</script>",false);
         }
+        public static void ScriptExecute(Page control, string script)
+        {
+            ScriptManager.RegisterClientScriptBlock(control, control.GetType(), "", "<script> " + script + "</script>", false);
+        }
     }
 }

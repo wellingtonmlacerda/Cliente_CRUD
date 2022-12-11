@@ -3,8 +3,31 @@
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
 
 <asp:Content ID="ContentScripts" ContentPlaceHolderID="Js" runat="server">
-    <script>
-</script>
+    <script type="text/javascript" defer="defer">
+        window.onload = function () {
+            habilitaCampo();
+        };
+            function habilitaCampo() {
+                var cpf = $('#groupCpf')
+                var cnpj = $('#groupCnpj')
+
+                cpf.addClass('hide')
+                cnpj.addClass('hide')
+
+                var ddlTipo = $('#<%= ddlTipo.ClientID%> option:selected').val();
+
+                if (ddlTipo == 'PF' || ddlTipo == '')
+                    cpf.removeClass('hide')
+                else
+                    cnpj.removeClass('hide')
+        }
+        function confirma() {
+            if (confirm('Realmente deseja excluír esse registro?') == true)
+                return true
+
+            return false
+        }
+    </script>
 </asp:Content>
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <div class="row">
@@ -52,7 +75,7 @@
                         <label for="ddlTipo" class="col-sm-2 control-label">Tipo</label>
                         <div class="col-sm-10">
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ValidationGroup="cliente" ErrorMessage="*Campo obrigatório" CssClass="label label-danger" ControlToValidate="ddlTipo" SetFocusOnError="true" />
-                            <asp:DropDownList ID="ddlTipo" CssClass="form-control" runat="server" ValidationGroup="cliente" OnSelectedIndexChanged="ddlTipo_SelectedIndexChanged" AutoPostBack="true">
+                            <asp:DropDownList ID="ddlTipo" CssClass="form-control" runat="server" OnClick="habilitaCampo()" ValidationGroup="cliente">
                                 <asp:ListItem Text="Selecione..." Value="" />
                                 <asp:ListItem Text="Pessoa Física" Value="PF" />
                                 <asp:ListItem Text="Pessoa Jurídica" Value="PJ" />
@@ -62,28 +85,22 @@
                     <div class="form-group">
                         <label for="txtEmail" class="col-sm-2 control-label">Email</label>
                         <div class="col-sm-10">
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ValidationGroup="cliente" ErrorMessage="*Campo obrigatório" CssClass="label label-danger" ControlToValidate="ddlTipo" SetFocusOnError="true" />
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ValidationGroup="cliente" ErrorMessage="*Campo obrigatório" CssClass="label label-danger" ControlToValidate="txtEmail" SetFocusOnError="true" />
                             <asp:TextBox ID="txtEmail" CssClass="form-control" runat="server" Type="email" ValidationGroup="cliente" />
                         </div>
                     </div>
-                    <asp:PlaceHolder ID="phCpf" runat="server">
-                        <div class="form-group">
+                        <div class="form-group groupCpf" id="groupCpf">
                             <label for="txtCpf" class="col-sm-2 control-label">CPF</label>
                             <div class="col-sm-10">
-                                <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ValidationGroup="cliente" ErrorMessage="*Campo obrigatório" CssClass="label label-danger" ControlToValidate="txtCpf" SetFocusOnError="true" />
-                                <asp:TextBox ID="txtCpf" CssClass="form-control cpf" runat="server" ValidationGroup="cliente" />
+                                <asp:TextBox ID="txtCpf" CssClass="form-control cpf" runat="server" />
                             </div>
                         </div>
-                    </asp:PlaceHolder>
-                    <asp:PlaceHolder ID="phCnpj" runat="server">
-                        <div class="form-group">
+                        <div class="form-group groupCnpj" id="groupCnpj">
                             <label for="txtCnpj" class="col-sm-2 control-label">CNPJ</label>
                             <div class="col-sm-10">
-                                <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ValidationGroup="cliente" ErrorMessage="*Campo obrigatório" CssClass="label label-danger" ControlToValidate="txtCnpj" SetFocusOnError="true" />
-                                <asp:TextBox ID="txtCnpj" CssClass="form-control cnpj" runat="server" ValidationGroup="cliente" />
+                                <asp:TextBox ID="txtCnpj" CssClass="form-control cnpj" runat="server" />
                             </div>
                         </div>
-                    </asp:PlaceHolder>
                     <div class="form-group">
                         <label for="ddlStatus" class="col-sm-2 control-label">Status</label>
                         <div class="col-sm-10">
@@ -98,6 +115,8 @@
                     <div class="form-group">
                         <div class="col-sm-offset-2 col-sm-10">
                             <asp:Button ID="btnSalvar" CssClass="btn btn-success" runat="server" OnClick="btnSalvar_Click" Text="Salvar" ValidationGroup="cliente" />
+                            <asp:LinkButton ID="lkbVoltar" CssClass="btn btn-primary" PostBackUrl="~/Default.aspx" runat="server" Text="Voltar" />
+                            <asp:LinkButton ID="lkbDelete" CssClass="btn btn-danger" runat="server" Text="Excluir" OnClick="lkbDelete_Click" OnClientClick="return confirma()" />
                         </div>
                     </div>
                 </ContentTemplate>
