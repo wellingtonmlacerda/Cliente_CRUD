@@ -28,5 +28,29 @@ namespace Cliente_CRUD
                 Utilitarios.Alerta(this, "Um erro ocorreu ao carregar a página!");
             }
         }
+
+        protected void btnBuscar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (!string.IsNullOrWhiteSpace(txtPesquisa.Text))
+                {
+                    using (CLIENTEEntities db = new CLIENTEEntities())
+                    {
+                        var clinetes = db.CLIENTE.Where(x => x.CLIE_NOME.Contains(txtPesquisa.Text.Trim())).ToList();
+
+                        lvClientes.DataSource = clinetes;
+                        lvClientes.DataBind();
+
+                        upClientes.Update();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                hfError.Value = ex.Message;
+                Utilitarios.Alerta(this, "Um erro ocorreu ao tentar buscar os registros!");
+            }
+        }
     }
 }
